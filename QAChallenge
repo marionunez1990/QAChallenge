@@ -1,0 +1,190 @@
+using NUnit.Framework;
+using OpenQA.Selenium;
+using OpenQA.Selenium.Chrome;
+using OpenQA.Selenium.Support.UI;
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading;
+using System.Threading.Tasks;
+
+namespace QAChallenge
+{
+    [TestFixture]
+    public class TestClass
+    {
+        IWebDriver driver;
+        IWebElement firstName,
+            lastName,
+            middleName,
+            middleNameCheck,
+            month,
+            day,
+            year,
+            gender,
+            ssn,
+            zip,
+            email,
+            phone,
+            certified,
+            terms,
+            policy,
+            continueButton,
+            readSummary,
+            backSummaryButton,
+            nextSummaryButton,
+            readDisclosure,
+            backDisclosureButton,
+            nextDisclosureButton,
+            authorization,
+            backAuhorizationButton,
+            reviewDataButton,
+            editButton,
+            confirmButton,
+            certify,
+            termsCertify,
+            policyCertify,
+            name,
+            signature,
+            bysignin,
+            information,
+            rights,
+            disclosure,
+            authorizationPage,
+            confirmation;
+        SelectElement selectMonth,
+            selectDay,
+            selectYear,
+            selectGender;
+        public void ParametersInformation()
+        {
+            //items
+            firstName = driver.FindElement(By.XPath("//*[@id='firstName']"));
+            lastName = driver.FindElement(By.XPath("//*[@id='lastName']"));
+            middleName = driver.FindElement(By.XPath("//*[@id='middleName']"));
+            middleNameCheck = driver.FindElement(By.XPath("//*[@id='app']/div/div/div/div/div[2]/div[3]/div[1]/div/form/div[4]/div/input"));
+            month = driver.FindElement(By.XPath("//*[@id='app']/div/div/div/div/div[2]/div[3]/div[1]/div/form/div[5]/div[1]/div/div"));
+            day = driver.FindElement(By.XPath("//*[@id='app']/div/div/div/div/div[2]/div[3]/div[1]/div/form/div[5]/div[2]/div/div"));
+            year = driver.FindElement(By.XPath("//*[@id='app']/div/div/div/div/div[2]/div[3]/div[1]/div/form/div[5]/div[3]/div/div"));
+            gender = driver.FindElement(By.XPath("//*[@id='app']/div/div/div/div/div[2]/div[3]/div[1]/div/form/div[6]/div/div/div"));
+            ssn = driver.FindElement(By.XPath("//*[@id='ssn']"));
+            zip = driver.FindElement(By.XPath("//*[@id='zipcode']"));
+            email = driver.FindElement(By.XPath("//*[@id='email']"));
+            phone = driver.FindElement(By.XPath("//*[@id='phone']"));
+            certified = driver.FindElement(By.XPath("//*[@id='app']/div/div/div/div/div[2]/div[3]/div[1]/div/div[1]/div/div/input"));
+            terms = driver.FindElement(By.XPath("//*[@id='app']/div/div/div/div/div[2]/div[3]/div[1]/div/div[2]/p/a[1]"));
+            policy = driver.FindElement(By.XPath("//*[@id='app']/div/div/div/div/div[2]/div[3]/div[1]/div/div[2]/p/a[2]"));
+            continueButton = driver.FindElement(By.XPath("//*[@id='app']/div/div/div/div/div[2]/div[3]/div[1]/div/div[3]/div/button"));
+            
+            //section
+            information = driver.FindElement(By.XPath("//*[@id='app']/div/div/div/div/div[2]/div[1]/button[1]/div/div"));            
+        }
+        public void ParametersRights()
+        {
+            //items
+            readSummary = driver.FindElement(By.XPath("//*[@id='app']/div/div/div/div/div[2]/div[3]/div[2]/div/div[2]/div/input"));
+            backSummaryButton = driver.FindElement(By.XPath("//*[@id='app']/div/div/div/div/div[2]/div[3]/div[2]/div/div[3]/button"));
+            nextSummaryButton = driver.FindElement(By.XPath("//*[@id='app']/div/div/div/div/div[2]/div[3]/div[2]/div/div[4]/div/button"));
+            
+            //Section
+            rights = driver.FindElement(By.XPath("//*[@id='app']/div/div/div/div/div[2]/div[1]/button[2]/div/div"));            
+        }
+        public void ParametersDisclosure()
+        {
+            //items
+            readDisclosure = driver.FindElement(By.XPath("//*[@id='app']/div/div/div/div/div[2]/div[3]/div[3]/div/div[2]/div/input"));
+            backDisclosureButton = driver.FindElement(By.XPath("//*[@id='app']/div/div/div/div/div[2]/div[3]/div[3]/div/div[3]/button"));
+            nextDisclosureButton = driver.FindElement(By.XPath("//*[@id='app']/div/div/div/div/div[2]/div[3]/div[3]/div/div[4]/div/button"));
+            
+            //Section
+            disclosure = driver.FindElement(By.XPath("//*[@id='app']/div/div/div/div/div[2]/div[1]/button[3]/div/div"));            
+        }
+        public void ParametersAuthorization()
+        {
+            //items
+            authorization = driver.FindElement(By.XPath("//*[@id='app']/div/div/div/div/div[2]/div[3]/div[4]/div/div[2]/div[1]/div/input"));
+            backAuhorizationButton = driver.FindElement(By.XPath("//*[@id='app']/div/div/div/div/div[2]/div[3]/div[4]/div/div[2]/div[2]/button"));
+            reviewDataButton = driver.FindElement(By.XPath("//*[@id='app']/div/div/div/div/div[2]/div[3]/div[4]/div/div[2]/div[3]/div/button"));
+            
+            //Section
+            authorizationPage = driver.FindElement(By.XPath("//*[@id='app']/div/div/div/div/div[2]/div[1]/button[4]/div/div"));
+            
+        }
+        public void ParametersConfirmation()
+        {
+            //items
+            certify = driver.FindElement(By.XPath("//*[@id='app']/div/div/div/div/div[2]/div[3]/div[5]/div/div[2]/div/div/input"));
+            termsCertify = driver.FindElement(By.XPath("//*[@id='app']/div/div/div/div/div[2]/div[3]/div[5]/div/div[3]/p/a[1]"));
+            policyCertify = driver.FindElement(By.XPath("//*[@id='app']/div/div/div/div/div[2]/div[3]/div[5]/div/div[3]/p/a[2]"));
+            name = driver.FindElement(By.XPath("//*[@id='name']"));
+            signature = driver.FindElement(By.XPath("//*[@id='signature - pad']/div[1]/canvas"));
+            bysignin = driver.FindElement(By.XPath("//*[@id='app']/div/div/div/div/div[2]/div[3]/div[5]/div/div[4]/div[3]/input"));
+            editButton = driver.FindElement(By.XPath("//*[@id='app']/div/div/div/div/div[2]/div[3]/div[5]/div/div[5]/button"));
+            confirmButton = driver.FindElement(By.XPath("//*[@id='app']/div/div/div/div/div[2]/div[3]/div[5]/div/div[6]/div/button"));
+
+            //Section
+            confirmation = driver.FindElement(By.XPath("//*[@id='app']/div/div/div/div/div[2]/div[1]/button[5]/div/div"));
+        }
+        [SetUp] //Set parameters
+        public void SetUp()
+        {
+            driver = new ChromeDriver();
+            driver.Url = "https://partners.turning.io/consent/OCzYe1VB-UWRaz4RyZ-MgpYOkl4OZsTa";
+            Console.WriteLine("setup");
+            driver.Manage().Window.Maximize();
+        }
+        [Test] //Test Case to fill the information
+        public void Register()
+        {
+            //Information
+            Thread.Sleep(100);
+            ParametersInformation();
+            firstName.SendKeys("First Name");
+            lastName.SendKeys("Last Name");
+            middleName.SendKeys("Middle");
+            selectMonth = new SelectElement(month);
+            selectMonth.SelectByIndex(4);
+            selectDay = new SelectElement(day);
+            selectDay.SelectByIndex(4);
+            selectYear = new SelectElement(year);
+            selectYear.SelectByIndex(12);
+            selectGender = new SelectElement(gender);
+            selectGender.SelectByIndex(1);
+            ssn.SendKeys("123456789");
+            zip.SendKeys("37298");
+            email.SendKeys("nu.hernandezmario@outlook.com");
+            phone.SendKeys("11234567890");
+            certified.Click();
+            Thread.Sleep(100);
+            continueButton.Click();
+
+            //Rights
+            ParametersRights();
+            readSummary.Click();
+            nextSummaryButton.Click();
+
+            //Disclosure
+            ParametersDisclosure();
+            readDisclosure.Click();
+            nextDisclosureButton.Click();
+
+            //Authorization
+            ParametersAuthorization();
+            authorization.Click();
+            reviewDataButton.Click();
+
+            //Confirmation
+            ParametersConfirmation();
+            name.SendKeys("Name of User");
+            signature.Click();
+            bysignin.Click();
+            confirmButton.Click();            
+        }
+        [TearDown]
+        public void CloseBrowser()
+        {
+            driver.Quit();
+        }
+    }
+}
